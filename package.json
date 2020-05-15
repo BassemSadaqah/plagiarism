@@ -18,6 +18,7 @@
   "homepage": "https://github.com/BassemSadaqah/plagiarism#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "hummus": "^1.0.108"
+    "hummus": "^1.0.108",
+    "pg": "^8.2.0"
   }
 }
