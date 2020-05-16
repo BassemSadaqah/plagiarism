@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
   limit: '10mb',
   extended: true
 }));
-var client = new pg.Client({
+var client = new pg.Client(process.env.DATABASE_URL || {
   user: 'qnfkzdqpeybeti',
   password: '3e32b9c61b4baab4b30edf09727c8f2e687c1ae0e4cf32e4c508f98b6990f9eb',
   database: 'd36hu2i3ceh9d1',
