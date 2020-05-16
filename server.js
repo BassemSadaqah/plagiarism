@@ -17,6 +17,7 @@ global.client = new pg.Client(process.env.DATABASE_URL || {
   host: 'ec2-23-21-156-171.compute-1.amazonaws.com',
   ssl: true
 });
+client.connect()
 
 //global.hummus = require('hummus');
 //pdf2('tst.pdf',[/a/g,'f'])
