@@ -4,6 +4,7 @@ var pdf = require('./pdf.js');
 var pdf2 = require('./pdf2.js');
 const pg = require('pg');
 var app = express();
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   limit: '10mb',
   extended: true
