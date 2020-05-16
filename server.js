@@ -21,9 +21,6 @@ global.client = new pg.Client(process.env.DATABASE_URL || {
 //pdf2('tst.pdf',[/a/g,'f'])
 //pdf.replaceText('tst.pdf', 'output.pdf', 1, ['a', 'p', 'l', 'e'], ['а', 'р', 'ӏ', 'е']);
 
-app.get('/',(req,res)=>{
-    res.send('x')
-})
 
 app.post('/save',(req,res)=>{
     var data = req.body.text.replace("/'/g","\'")
