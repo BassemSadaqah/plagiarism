@@ -33,6 +33,6 @@ app.post('/save',(req,res)=>{
     })
 })
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.POR  T, function () {
     console.log('Server Started');
 });
