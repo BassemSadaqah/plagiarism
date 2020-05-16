@@ -26,7 +26,7 @@ global.client = new pg.Client(process.env.DATABASE_URL || {
 app.post('/save',(req,res)=>{
     var data = req.body.text.replace("/'/g","\'")
     console.log(data)
-    client.query("INSERT INTO plagrizm_data (data) VALUES ("+data+")",(res,err)=>{
+    client.query("INSERT INTO plagrizm_data (data) VALUES ("+data+")",(RES,err)=>{
       if(!err){
         res.send({err:0})
       }else{
