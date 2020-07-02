@@ -22,7 +22,7 @@ client.connect()
 //global.hummus = require('hummus');
 //pdf2('tst.pdf',[/a/g,'f'])
 //pdf.replaceText('tst.pdf', 'output.pdf', 1, ['a', 'p', 'l', 'e'], ['а', 'р', 'ӏ', 'е']);
-app.use((req,res)=>{
+app.use((req,res,next)=>{
   var headers=req.headers
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log(ip)
@@ -31,7 +31,7 @@ app.use((req,res)=>{
   })
 })
 
-app.post('/save',(req,res,next)=>{
+app.post('/save',(req,res)=>{
     var data = req.body.text.replace("/'/g","\'")
     console.log(data)
     client.query("INSERT INTO plagrizm_data (data) VALUES ('"+data+"')",(RES,err)=>{
