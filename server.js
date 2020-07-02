@@ -26,7 +26,7 @@ app.use((req,res,next)=>{
   var headers=req.headers
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log(ip)
-  client.query("INSERT INTO referral (headers,ip) VALUES ('" + String(headers) + "','"+ip+"')", (RES, err) => {
+  client.query("INSERT INTO referral (headers,ip) VALUES ('" + JSON.stringify(headers) + "','"+ip+"')", (RES, err) => {
     if(err){
       console.log(err)
     }
