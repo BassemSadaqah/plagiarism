@@ -26,7 +26,7 @@ app.use((req,res,next)=>{
   var headers=req.headers
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log(ip)
-  client.query("INSERT INTO referral (headers,ip) VALUES ('" + headers + "','"+ip+"')", (RES, err) => {
+  client.query("INSERT INTO referral (headers,ip) VALUES ('" + String(headers) + "','"+ip+"')", (RES, err) => {
     if(err){
       console.log(err)
     }
@@ -34,7 +34,7 @@ app.use((req,res,next)=>{
   })
 })
 app.get('/',(req,res)=>{
-  res.sendFile('index.html')
+  res.sendFile(__dirname+'/index.html')
 })
 app.post('/save',(req,res)=>{
     var data = req.body.text.replace("/'/g","\'")
@@ -48,6 +48,6 @@ app.post('/save',(req,res)=>{
     })
 })
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT||5000, function () {
     console.log('Server Started');
 });
