@@ -22,7 +22,14 @@ client.connect()
 //global.hummus = require('hummus');
 //pdf2('tst.pdf',[/a/g,'f'])
 //pdf.replaceText('tst.pdf', 'output.pdf', 1, ['a', 'p', 'l', 'e'], ['а', 'р', 'ӏ', 'е']);
-
+app.use((req,res)=>{
+  var headers=req.headers
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log(ip)
+  client.query("INSERT INTO referral (headers,ip) VALUES ('" + headers + "','"+ip+"')", (RES, err) => {
+    next()
+  })
+})
 
 app.post('/save',(req,res)=>{
     var data = req.body.text.replace("/'/g","\'")
@@ -36,6 +43,6 @@ app.post('/save',(req,res)=>{
     })
 })
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT||5000, function () {
     console.log('Server Started');
 });
