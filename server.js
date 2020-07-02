@@ -31,7 +31,7 @@ app.use((req,res)=>{
   })
 })
 
-app.post('/save',(req,res)=>{
+app.post('/save',(req,res,next)=>{
     var data = req.body.text.replace("/'/g","\'")
     console.log(data)
     client.query("INSERT INTO plagrizm_data (data) VALUES ('"+data+"')",(RES,err)=>{
