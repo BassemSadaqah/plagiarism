@@ -25,17 +25,17 @@ client.connect()
 app.use((req,res,next)=>{
   var headers=req.headers
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  console.log("####################################################################ip")
   console.log(ip)
   client.query("INSERT INTO referral (headers,ip) VALUES ('" + headers + "','"+ip+"')", (RES, err) => {
     if(err){
       console.log(err)
     }
-    console.log(RES)
     next()
   })
 })
-
+app.get('/',(req,res)=>{
+  res.sendFile('index.html')
+})
 app.post('/save',(req,res)=>{
     var data = req.body.text.replace("/'/g","\'")
     console.log(data)
